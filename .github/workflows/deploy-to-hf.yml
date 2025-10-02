@@ -1,0 +1,31 @@
+name: Deploy to Hugging Face Space
+
+on:
+  push:
+    branches: [ "main" ]  # jalankan tiap kali ada push ke branch main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+	 
+      - name: Debug token
+        run: echo "HF_TOKEN starts with => ${HF_TOKEN:0:4}..." # periksa token terdeteksi
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      
+      - name: Push to Hugging Face Space
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git clone https://username:$HF_TOKEN@huggingface.co/spaces/Thiano12/Praktek space_repo
+          rsync -av --exclude='.git' ./ space_repo/
+          cd space_repo
+          git add .
+          git commit -m "Update from GitHub Actions" || echo "No changes to commit"
+          git push
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          
