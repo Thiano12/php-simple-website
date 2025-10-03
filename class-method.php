@@ -39,3 +39,9 @@ echo "<br>";
 $mobil1->setKecepatan(50);
 echo $mobil1->percepat(20); // Output: Kecepatan sekarang: 70 km/jam
 ?>
+#$this merujuk pada objek saat ini (current object)
+#Digunakan untuk mengakses properties dan methods dalam class yang sama
+#Constructor (__construct) dijalankan otomatis ketika objek dibuat
+##Getter/Setter methods digunakan untuk mengakses dan mengubah nilai properties
+#Public properties/methods bisa diakses dari luar class
+#Private properties/methods hanya bisa diakses dari dalam clas
