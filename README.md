@@ -1,9 +1,8 @@
 ---
-title: Test
-emoji:🚀
+title: Praktek
+emoji: 🏃
 colorFrom: gray
-colorto: purple
+colorTo: gray
 sdk: docker
 pinned: false
-License: mit
 ---
